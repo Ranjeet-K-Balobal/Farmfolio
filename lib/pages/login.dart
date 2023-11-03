@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -34,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login Page'),
+        backgroundColor: Colors.blue, // Set the app bar background color
       ),
       body: Center(
         child: Padding(
@@ -43,32 +43,50 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               DropdownButton<String>(
                 value: selectedRole,
-                items: <String>['Banker', 'Farmer'].map((String value) {
+                items: <String>[
+                  'Banker',
+                  'Farmer',
+                  'Other Roles', // Add more role options if needed
+                ].map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
                   );
                 }).toList(),
                 onChanged: (String? newValue) {
-                setState(() {
+                  setState(() {
                     selectedRole = newValue ?? 'Banker'; // Use a default value if null
-                   });
+                  });
                 },
-
+                style: TextStyle(
+                  color: Colors.blue, // Set the text color of the dropdown
+                ),
+                dropdownColor: Colors.white, // Set the dropdown background color
               ),
+              const SizedBox(height: 20.0), // Increased spacing
               TextField(
                 controller: usernameController,
-                decoration: const InputDecoration(labelText: 'Username'),
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  border: OutlineInputBorder(), // Add input field border
+                ),
               ),
+              const SizedBox(height: 10.0), // Adjusted spacing
               TextField(
                 controller: passwordController,
                 obscureText: true,
-                decoration: const InputDecoration(labelText: 'Password'),
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
+                ),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 20.0), // Increased spacing
               ElevatedButton(
                 onPressed: _login,
                 child: const Text('Login'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue, // Set the button background color
+                ),
               ),
             ],
           ),
