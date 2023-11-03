@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -12,20 +13,26 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
   String selectedRole = 'Banker'; // Default role
 
-  // Function to handle the login button press
   void _login() {
     final username = usernameController.text;
     final password = passwordController.text;
 
-    // Implement your authentication logic here
-    // Check if the username and password are valid
-
-    // For demonstration, we'll just print the role and credentials
     print('Role: $selectedRole');
     print('Username: $username');
     print('Password: $password');
 
-    // You can add logic to navigate to the appropriate page based on the role
+    // Navigate to the appropriate home page based on the role
+    if (selectedRole == 'Banker') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage(role: 'Banker')),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage(role: 'Farmer')),
+      );
+    }
   }
 
   @override
@@ -33,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login Page'),
-        backgroundColor: Colors.blue, // Set the app bar background color
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Padding(
@@ -46,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                 items: <String>[
                   'Banker',
                   'Farmer',
-                  'Other Roles', // Add more role options if needed
+                  'Other Roles',
                 ].map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -55,23 +62,23 @@ class _LoginPageState extends State<LoginPage> {
                 }).toList(),
                 onChanged: (String? newValue) {
                   setState(() {
-                    selectedRole = newValue ?? 'Banker'; // Use a default value if null
+                    selectedRole = newValue ?? 'Banker';
                   });
                 },
                 style: TextStyle(
-                  color: Colors.blue, // Set the text color of the dropdown
+                  color: Colors.blue,
                 ),
-                dropdownColor: Colors.white, // Set the dropdown background color
+                dropdownColor: Colors.white,
               ),
-              const SizedBox(height: 20.0), // Increased spacing
+              const SizedBox(height: 20.0),
               TextField(
                 controller: usernameController,
                 decoration: InputDecoration(
                   labelText: 'Username',
-                  border: OutlineInputBorder(), // Add input field border
+                  border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 10.0), // Adjusted spacing
+              const SizedBox(height: 10.0),
               TextField(
                 controller: passwordController,
                 obscureText: true,
@@ -80,12 +87,12 @@ class _LoginPageState extends State<LoginPage> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 20.0), // Increased spacing
+              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: _login,
                 child: const Text('Login'),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Set the button background color
+                  primary: Colors.blue,
                 ),
               ),
             ],
