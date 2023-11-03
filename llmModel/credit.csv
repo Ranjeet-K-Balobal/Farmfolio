@@ -1,0 +1,6 @@
+ID,SSN,Farming_Turnover,Crop_Yields,Market_Demand,Land_Ownership,Land_Size,Weather_Data,Government_Subsidy,Expenses,Livestock_Inventory,Education,Debts_Liabilities,Community_Feedback,Creditworthiness
+1,123-45-6789,50000,2000,High,Owned,10 acres,Normal,Yes,15000,Cattle,High School,None,Low,
+2,987-65-4321,75000,3000,High,Leased,5 acres,Variable,No,20000,Chicken,College Degree,2000,Excellent,
+3,456-78-9012,40000,1500,Low,Owned,8 acres,Unpredictable,Yes,12000,Sheep,None,500,High,
+4,789-01-2345,60000,2500,High,Leased,7 acres,Normal,Yes,18000,Pigs,High School,10000,Low,
+5,210-54-3210,55000,2200,Low,Owned,12 acres,Variable,No,16000,Cattle,College Degree,None,High,
