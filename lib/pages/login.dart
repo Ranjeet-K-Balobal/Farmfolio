@@ -1,5 +1,7 @@
+import 'package:farmfolio/pages/registeration.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -33,6 +35,14 @@ class _LoginPageState extends State<LoginPage> {
         MaterialPageRoute(builder: (context) => HomePage(role: 'Farmer')),
       );
     }
+  }
+
+  void _goToRegistration() {
+    // Navigate to the registration page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => RegistrationPage()),
+    );
   }
 
   @override
@@ -94,6 +104,10 @@ class _LoginPageState extends State<LoginPage> {
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
                 ),
+              ),
+              TextButton(
+                onPressed: _goToRegistration, // Call the registration page
+                child: const Text('Create an Account'),
               ),
             ],
           ),
